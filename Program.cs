@@ -1,0 +1,57 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.EntityFrameworkCore;
+using MinimalAPIPeliculas;
+using MinimalAPIPeliculas.Endpoints;
+using MinimalAPIPeliculas.Entidades;
+using MinimalAPIPeliculas.Migrations;
+using MinimalAPIPeliculas.Repositorios;
+using MinimalAPIPeliculas.Servicios;
+using System.Reflection.Metadata.Ecma335;
+
+var builder = WebApplication.CreateBuilder(args);
+var ambiente = builder.Configuration.GetValue<string>("ambiente");
+var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")!;
+//Aquí van los servicios (antes del app builder)
+
+builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+opciones.UseSqlServer("name=DefaultConnection"));
+
+builder.Services.AddCors(options =>
+        options.AddDefaultPolicy(configuration=>
+    {
+        configuration.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();  
+    }));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddOutputCache();
+builder.Services.AddScoped<IRepositorioGeneros, RepositorioGeneros>();
+builder.Services.AddScoped<IRepositorioActores, RepositorioActores>();
+builder.Services.AddScoped<IAlmacenadorArchivos,AlmacenadorArchivosLocal>();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAutoMapper(typeof(Program));
+//***************************************************
+
+//Aquí los middlewares después del app builder
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+//Servicio Personalizado para acceso a la interfaz de repositorios (inversión de dependencias)
+
+app.UseStaticFiles();
+
+app.UseCors();
+app.UseOutputCache();
+//app.MapGet("/", () =>"En "+ ambiente+" Hello World!");
+//app.MapGet("/other-page", () =>  "Hello other page!");
+
+app.MapGroup("/generos").MapGeneros();
+app.MapGroup("/actores").MapActores();
+
+//*************************************************
+
+app.Run();
+

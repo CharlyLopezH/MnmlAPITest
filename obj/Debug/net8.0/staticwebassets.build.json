@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "g9nQBGcUDGobmG/YvJnb8fiPfFmZAtNDXNXlOrEUSqg=",
+  "Source": "MinimalAPIPeliculas",
+  "BasePath": "_content/MinimalAPIPeliculas",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MinimalAPIPeliculas\\wwwroot",
+      "Source": "MinimalAPIPeliculas",
+      "ContentRoot": "C:\\Contra\\tutoriales\\.net\\MinimalAPIPeliculas\\wwwroot\\",
+      "BasePath": "_content/MinimalAPIPeliculas",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
