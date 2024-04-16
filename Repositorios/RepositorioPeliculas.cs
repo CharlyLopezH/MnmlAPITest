@@ -1,4 +1,7 @@
-﻿using MinimalAPIPeliculas.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using MinimalAPIPeliculas.DTOs;
+using MinimalAPIPeliculas.Entidades;
+using MinimalAPIPeliculas.Utilidades;
 
 namespace MinimalAPIPeliculas.Repositorios
 {
@@ -13,12 +16,19 @@ namespace MinimalAPIPeliculas.Repositorios
             httpContext = httpContextAccessor.HttpContext!;
         }
 
-        //public async Task<List<Pelicula>> ObtenerTodos(PaginacionDTO paginacionDTO)
-        //{
-        //    var queryable = context.Peliculas.AsQueryable();
-        //    await httpContext.InsertarParametrosPaginacionEnCabecera(queryable);
-        //    return await queryable.OrderBy(p => p.Titulo).Paginar(paginacionDTO).ToListAsync();
-        //}
+        //Obtener todas las películas utilizando paginación
+        public async Task<List<Pelicula>> ObtenerTodas(PaginacionDTO paginacionDTO)
+        {
+            var queryable = context.Peliculas.AsQueryable();
+            await httpContext.InsertarParametrosPaginacionEnCabecera(queryable);
+            return await queryable.OrderBy(p => p.Titulo).Paginar(paginacionDTO).ToListAsync();
+        }
+
+        public async Task<Pelicula?> ObtenerPorId(int id)
+        {
+            return await context.Peliculas
+                .AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+        }
 
     }
 }
