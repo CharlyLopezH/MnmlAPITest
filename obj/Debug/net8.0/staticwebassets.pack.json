@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Contra\\tutoriales\\.net\\MinimalAPIPeliculas\\wwwroot\\actores\\079cfb6a-7adf-4dda-b414-af35f0c921f7.jpg",
+      "PackagePath": "staticwebassets\\actores\\079cfb6a-7adf-4dda-b414-af35f0c921f7.jpg"
+    },
+    {
+      "Id": "C:\\Contra\\tutoriales\\.net\\MinimalAPIPeliculas\\wwwroot\\actores\\8a0eb135-d5c5-4695-a44d-f7db08f0fba0.jpg",
+      "PackagePath": "staticwebassets\\actores\\8a0eb135-d5c5-4695-a44d-f7db08f0fba0.jpg"
+    },
+    {
+      "Id": "C:\\Contra\\tutoriales\\.net\\MinimalAPIPeliculas\\wwwroot\\actores\\a2ef46d1-c6e4-4f3b-bbba-c6e9b426ff65.jpg",
+      "PackagePath": "staticwebassets\\actores\\a2ef46d1-c6e4-4f3b-bbba-c6e9b426ff65.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MinimalAPIPeliculas.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MinimalAPIPeliculas.props",
+      "PackagePath": "build\\MinimalAPIPeliculas.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MinimalAPIPeliculas.props",
+      "PackagePath": "buildMultiTargeting\\MinimalAPIPeliculas.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MinimalAPIPeliculas.props",
+      "PackagePath": "buildTransitive\\MinimalAPIPeliculas.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
