@@ -273,3 +273,12 @@ C:\Contra\tutoriales\.net\MinimalAPIPeliculas\obj\Debug\net8.0\ref\MinimalAPIPel
 C:\Contra\tutoriales\.net\MinimalAPIPeliculas\obj\Debug\net8.0\MinimalAPIPeliculas.sourcelink.json
 C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\AutoMapper.dll
 C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\MinimalAPIPeliculas.staticwebassets.runtime.json
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\FluentValidation.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Contra\tutoriales\.net\MinimalAPIPeliculas\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

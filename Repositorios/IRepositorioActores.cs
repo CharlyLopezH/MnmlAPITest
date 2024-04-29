@@ -12,5 +12,6 @@ namespace MinimalAPIPeliculas.Repositorios
         Task<Actor?> ObtenerPorId(int id);
         Task<List<Actor>> ObtenerTodos(PaginacionDTO paginacionDTO);
         Task<List<Actor>> ObtenerPorNombre(string nombre);
+        Task<List<int>> Existen(List<int> ids);
     }
 }

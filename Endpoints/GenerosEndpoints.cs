@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.OutputCaching;
 using MinimalAPIPeliculas.DTOs;
 using MinimalAPIPeliculas.Entidades;
+using MinimalAPIPeliculas.Filtros;
 using MinimalAPIPeliculas.Migrations;
 using MinimalAPIPeliculas.Repositorios;
 
@@ -12,16 +14,19 @@ namespace MinimalAPIPeliculas.Endpoints
     {
         public static RouteGroupBuilder MapGeneros(this RouteGroupBuilder group)
         {
-            group.MapPost("/", CrearGenero);
+            group.MapPost("/", CrearGenero).AddEndpointFilter<FiltroValidacionesGeneros>();
             //Endpoint para actualizar un género
-            group.MapPut("/{id:int}", ActualizarGenero);
+            group.MapPut("/{id:int}", ActualizarGenero).AddEndpointFilter<FiltroValidaciones<CrearGeneroDTO>>();
             //Endpoint para borrar un Género
             group.MapDelete("/{id:int}", BorrarGenero);
             //Obtener genero por Id
-            group.MapGet("/{id:int}", ObtenerGeneroPorId);
-            //Lo mismo que el ejemplo en la clase program pero con funcion nombrada
-            group.MapGet("/", ObtenerGeneros).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(50)).Tag("generos-tag-cache"));
+            group.MapGet("/{id:int}", ObtenerGeneroPorId).AddEndpointFilter<FiltroValidaciones<CrearGeneroDTO >> ();
 
+            //De prueba 
+            //group.MapGet("/{id:int}", ObtenerGeneroPorId).AddEndpointFilter<FiltroDePrueba>();
+
+            //Lo mismo que el ejemplo en la clase program pero con funcion nombrada
+            group.MapGet("/", ObtenerGeneros).CacheOutput(c => c.Expire(TimeSpan.FromSeconds(50)).Tag("generos-tag-cache")).RequireAuthorization();
             static async Task<Ok<List<GeneroDTO>>> ObtenerGeneros(IRepositorioGeneros repositorio, IMapper mapper)
             {
                 var generos = await repositorio.ObtenerTodos();
@@ -56,7 +61,7 @@ namespace MinimalAPIPeliculas.Endpoints
                 return TypedResults.Ok(generoDTO);
             }
 
-            static async Task<Created<GeneroDTO>> CrearGenero(CrearGeneroDTO crearGeneroDTO, IRepositorioGeneros repositorio, 
+            static async Task<Results<Created<GeneroDTO>,ValidationProblem>> CrearGenero(CrearGeneroDTO crearGeneroDTO, IRepositorioGeneros repositorio, 
                 IOutputCacheStore outputCacheStore, IMapper mapper)
             {
                 var genero = mapper.Map<Genero>(crearGeneroDTO);
